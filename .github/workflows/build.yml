@@ -1,0 +1,42 @@
+name: Build
+on: push
+
+jobs:
+  build:
+    name: build buildroot firmwares
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        board:
+          - usb4vc_raspberrypi
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+      # package list from https://buildroot.org/downloads/manual/manual.html#requirement-mandatory
+      - name: Install build deps
+        run: |
+          sudo apt install -y \
+            sed make binutils build-essential gcc g++ bash patch \
+            gzip bzip2 perl tar cpio unzip rsync file bc wget \
+            libncurses5-dev git subversion graphviz asciidoc \
+            python-is-python3 python3 python3-matplotlib
+      - name: Cache downloads
+        uses: actions/cache@v2
+        with:
+          path: ./firmware/baseboard/buildroot/dl/
+          key: ${{ matrix.board }}-dl
+      - name: Configure build
+        run: make ${{ matrix.board }}_defconfig
+        working-directory: ./firmware/baseboard/
+      - name: Build
+        run: make -j$(nproc)
+        working-directory: ./firmware/baseboard/
+      - name: Publish build results
+        uses: actions/upload-artifact@v2
+        with:
+          name: Firmware ${{ matrix.board }}
+          path:
+            firmware/baseboard/buildroot/output/images/sdcard.img
+
