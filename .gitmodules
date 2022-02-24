@@ -1,0 +1,4 @@
+[submodule "firmware/baseboard/buildroot"]
+	path = firmware/baseboard/buildroot
+	url = git://git.buildroot.net/buildroot
+	branch = 2021.11.x
