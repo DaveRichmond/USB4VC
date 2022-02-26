@@ -21,3 +21,14 @@ disable_overscan=1
 gpu_mem_256=100
 gpu_mem_512=100
 gpu_mem_1024=100
+
+# enable uart0 for system console
+dtoverlay=uart0
+# enable uart1 for usb4vc control (may conflict with some pins, fixme later)
+dtoverlay=uart1,txd1_pin=32,rxd1_pin=33
+
+dtparam=i2c_arm=on
+dtparam=spi=on
+enable_uart=1
+disable_splash=1
+
