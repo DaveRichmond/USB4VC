@@ -1,3 +1,9 @@
+Note: this fork is attempting to move the underlying os to buildroot.
+This is to allow automated building of the os image and also portability
+to other arm single board computers (as I was pondering a similar project
+that used an orangepi zero). It is going to be slow going, as I'm only working
+on this occasionally.
+
 # USB4VC: USB Inputs on Retro Computers!
 
 [Get USB4VC!](https://www.kickstarter.com/projects/dekunukem/usb4vc-usb-inputs-on-retro-computers) | [Official Discord](https://discord.gg/HAuuh3pAmB) | [Getting Started](getting_started.md) | [Table of Contents](#table-of-contents)
