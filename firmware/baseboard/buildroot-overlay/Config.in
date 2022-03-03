@@ -1,0 +1,5 @@
+config BR2_PACKAGE_USB4VC
+	bool "usb4vc"
+	depends on BR2_PACKAGE_PYTHON3
+	help
+		USB4VC USB for Vintage Computers
