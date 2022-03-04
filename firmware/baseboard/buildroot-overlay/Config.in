@@ -1,5 +1,39 @@
 config BR2_PACKAGE_USB4VC
 	bool "usb4vc"
 	depends on BR2_PACKAGE_PYTHON3
+	select BR2_PACKAGE_PYTHON_LUMA_OLED
 	help
 		USB4VC USB for Vintage Computers
+
+config BR2_PACKAGE_PYTHON_LUMA_OLED
+	bool "python-luma-oled"
+	depends on BR2_PACKAGE_PYTHON3
+	select BR2_PACKAGE_PYTHON_LUMA_CORE
+	help
+		Luma.OLED python package (FIXME: more details)
+
+config BR2_PACKAGE_PYTHON_LUMA_CORE
+	bool "python-luma-core"
+	depends on BR2_PACKAGE_PYTHON3
+	select BR2_PACKAGE_PYTHON_PILLOW
+	select BR2_PACKAGE_PYTHON_PIGPIO
+	select BR2_PACKAGE_PYTHON_SMBUS2
+	select BR2_PACKAGE_PYTHON_PYFTDI
+	select BR2_PACKAGE_PYTHON_CBOR2
+	select BR2_PACKAGE_PYTHON_SPIDEV
+	help
+		Luma.Core python package
+
+config BR2_PACKAGE_PYTHON_SMBUS2
+	bool "python-smbus2"
+	depends on BR2_PACKAGE_PYTHON3
+	help
+		SMBus2 pure python library
+
+config BR2_PACKAGE_PYTHON_PYFTDI
+	bool "python-pyftdi"
+	depends on BR2_PACKAGE_PYTHON3
+	select BR2_PACKAGE_PYTHON_PYUSB
+	select BR2_PACKAGE_PYTHON_SERIAL
+	help
+		PyFTDI
